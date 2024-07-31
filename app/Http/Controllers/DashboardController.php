@@ -14,7 +14,6 @@ class DashboardController extends Controller
 
         $notes = Note::where('user_id', $user->id)->orderBy('updated_at', 'desc')->get();
 
-        // dd($notes);
         return view('dashboard', [
             'notes' => $notes
         ]);

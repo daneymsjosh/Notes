@@ -18,5 +18,10 @@
             </li>
         </ul>
     </div>
-    <a href="#" class="list-group-item list-group-item-action">{{ __('New category') }}</a>
+</div>
+<div class="py-3 d-flex justify-center">
+    <button class="btn btn-primary" style="width: 100%" x-data=""
+        x-on:click.prevent="$dispatch('open-modal', 'new-note')">
+        <i class="fa-solid fa-plus me-2"></i>{{ __('New Category') }}
+    </button>
 </div>

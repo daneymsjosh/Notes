@@ -2,4 +2,4 @@
     <i class="fa-solid fa-plus me-2"></i>{{ __('New Note') }}
 </button>
 
-@include('notes.store-note-modal')
+@include('notes.modals.store-note-modal')

@@ -17,7 +17,7 @@
                 <div class="col-md-9">
                     <div class="d-flex justify-content-between mb-3">
                         <h1 class="text-xl mb-0">{{ __('Note') }}</h1>
-                        @include('notes.new-note-button')
+                        @include('notes.buttons.new-note-button')
                     </div>
                     @include('notes.note-list')
                 </div>

@@ -13,7 +13,8 @@
                 <div class="card-footer d-flex bd-highlight">
                     <small class="me-auto p-2 bd-highlight">{{ $note->updated_at->format('Y, M d') }}</small>
                     <button class="p-2 bd-highlight fa-solid fa-thumbtack"></button>
-                    <button class="p-2 bd-highlight fa-solid fa-pen"></button>
+                    @include('notes.buttons.edit-note-button')
+                    @include('notes.buttons.delete-note-button')
                 </div>
             </div>
         </div>

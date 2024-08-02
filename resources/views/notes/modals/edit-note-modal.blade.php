@@ -24,6 +24,17 @@
                     <span class="d-block fs-6 text-danger mt-2">{{ $message }}</span>
                 @enderror
             </div>
+            <div class="mt-4">
+                <label name="category" class="w-32 text-sm font-medium text-gray-900">Category</label>
+                <select name="category_id"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+                    <option value="">All Notes</option>
+                    @foreach ($categories as $category)
+                        <option value="{{ $category->id }}"
+                            {{ $note->category_id == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
+                    @endforeach
+                </select>
+            </div>
         </div>
 
         <div class="mt-6 flex justify-end">

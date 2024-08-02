@@ -16,6 +16,8 @@ class NoteController extends Controller
 
         $validated['user_id'] = auth()->id();
 
+        $validated['category_id'] = $request->input('category_id') ?: null;
+
         // Create Note
         Note::create($validated);
 
@@ -26,6 +28,8 @@ class NoteController extends Controller
     {
         // Validate content
         $validated = $request->validated();
+
+        $validated['category_id'] = $request->input('category_id') ?: null;
 
         // Update Note
         $note->update($validated);

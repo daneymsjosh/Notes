@@ -1,5 +1,6 @@
 <div class="list-group">
-    <a href="#" class="list-group-item list-group-item-action active">
+    <a href="{{ route('dashboard') }}"
+        class="list-group-item list-group-item-action {{ Route::is('dashboard') ? 'active' : '' }}">
         {{ __('All Notes') }}
     </a>
     <a href="#" class="list-group-item list-group-item-action">{{ __('Favorites') }}</a>
@@ -9,7 +10,8 @@
             @foreach ($categories as $category)
                 <li>
                     <div class="d-flex bd-highlight">
-                        <a href="#" class="list-group-item-action text-md mt-1">{{ $category->name }}</a>
+                        <a href="{{ route('categories.show', $category->id) }}"
+                            class="list-group-item-action text-md mt-1">{{ $category->name }}</a>
                         @include('categories.buttons.edit-category-button')
                         @include('categories.buttons.delete-category-button')
                     </div>

@@ -34,13 +34,13 @@ class NoteController extends Controller
         // Update Note
         $note->update($validated);
 
-        return redirect()->route('dashboard');
+        return redirect()->back();
     }
 
     public function destroy(Note $note)
     {
         $note->delete();
 
-        return redirect()->route('dashboard');
+        return redirect()->back();
     }
 }

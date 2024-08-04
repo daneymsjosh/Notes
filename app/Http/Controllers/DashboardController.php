@@ -9,11 +9,13 @@ use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $user = Auth::user();
 
-        $notes = Note::where('user_id', $user->id)->orderBy('updated_at', 'desc')->get();
+        $notes = Note::when($request->has('search'), function ($query) {
+            $query->search(request('search', ''));
+        })->orderBy('updated_at', 'desc')->get();
 
         $categories = Category::where('user_id', $user->id)->orderBy('created_at', 'desc')->get();
 

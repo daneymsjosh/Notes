@@ -15,9 +15,15 @@
 
                 <!-- Notes Grid -->
                 <div class="col-md-9">
-                    <div class="d-flex justify-content-between mb-3">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
                         <h1 class="text-xl mb-0">{{ $currentCategory->name }}</h1>
-                        @include('notes.buttons.new-note-button')
+                        <div class="flex-grow-1 d-flex justify-content-center">
+                            @include('categories.shared.search-box')
+                        </div>
+                        <div class="d-flex align-items-center">
+                            @include('categories.shared.sort-fields')
+                            @include('notes.buttons.new-note-button')
+                        </div>
                     </div>
                     @include('notes.note-list')
                 </div>

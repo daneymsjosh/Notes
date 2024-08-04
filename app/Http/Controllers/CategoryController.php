@@ -11,11 +11,17 @@ use App\Http\Requests\UpdateCategoryRequest;
 
 class CategoryController extends Controller
 {
-    public function show(Category $category)
+    public function show(Category $category, Request $request)
     {
         $user = Auth::user();
 
-        $notes = Note::where('user_id', $user->id)->where('category_id', $category->id)->orderBy('updated_at', 'desc')->get();
+        $sortField = $request->get('sortField', 'updated_at');
+        $sortOrder = $request->get('sortOrder', 'desc');
+
+        $notes = Note::where('user_id', $user->id)->where('category_id', $category->id)
+            ->when($request->has('search'), function ($query) {
+                $query->search(request('search', ''));
+            })->orderBy($sortField, $sortOrder)->get();
 
         $categories = Category::where('user_id', $user->id)->orderBy('created_at', 'desc')->get();
 

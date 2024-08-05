@@ -2,13 +2,27 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Note;
+use App\Models\Category;
+use Illuminate\Http\Request;
 use App\Http\Requests\StoreNoteRequest;
 use App\Http\Requests\UpdateNoteRequest;
-use App\Models\Note;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class NoteController extends Controller
 {
+    public function show(Note $note)
+    {
+        $user = Auth()->user();
+
+        $categories = Category::where('user_id', $user->id)->orderBy('created_at', 'desc')->get();
+
+        return view('notes.show', [
+            'note' => $note,
+            'categories' => $categories
+        ]);
+    }
+
     public function store(StoreNoteRequest $request)
     {
         // Validate content

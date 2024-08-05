@@ -11,7 +11,7 @@
                 <!-- Navigation Links -->
                 <div class="d-none d-md-flex space-x-8">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" class="text-light">
-                        {{ __('Dashboard') }}
+                        {{ __('Home') }}
                     </x-nav-link>
                 </div>
             </div>
@@ -71,7 +71,7 @@
     <div :class="{ 'd-block': open, 'd-none': !open }" class="d-none d-md-none">
         <div class="pb-3">
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
+                {{ __('Home') }}
             </x-responsive-nav-link>
         </div>
 

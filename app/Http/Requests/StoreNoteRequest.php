@@ -23,7 +23,7 @@ class StoreNoteRequest extends FormRequest
     {
         return [
             'title' => 'required|min:3|max:124',
-            'content' => 'required|min:5|max:512',
+            'content' => 'required|min:5|max:1440',
         ];
     }
 }

@@ -5,9 +5,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NoteController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\NoteFavoriteController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
@@ -23,3 +24,10 @@ require __DIR__ . '/auth.php';
 Route::resource('notes', NoteController::class)->middleware(['auth']);
 
 Route::resource('categories', CategoryController::class)->middleware(['auth']);
+
+
+Route::get('favorites', NoteFavoriteController::class)->middleware('auth')->name('favorites');
+
+Route::post('notes/{note}/favorite', [NoteFavoriteController::class, 'favorite'])->middleware('auth')->name('notes.favorite');
+
+Route::post('notes/{note}/unfavorite', [NoteFavoriteController::class, 'unfavorite'])->middleware('auth')->name('notes.unfavorite');

@@ -12,7 +12,17 @@
                 </div>
                 <div class="card-footer d-flex bd-highlight">
                     <small class="me-auto p-2 bd-highlight">{{ $note->updated_at->format('Y, M d') }}</small>
-                    <button class="p-2 bd-highlight fa-solid fa-thumbtack"></button>
+                    @if (!$note->pinned)
+                        <form action="{{ route('notes.favorite', $note) }}" method="post">
+                            @csrf
+                            <button class="p-2 bd-highlight fa-regular fa-star"></button>
+                        </form>
+                    @else
+                        <form action="{{ route('notes.unfavorite', $note) }}" method="post">
+                            @csrf
+                            <button class="p-2 bd-highlight fa-solid fa-star"></button>
+                        </form>
+                    @endif
                     @include('notes.buttons.edit-note-button')
                     @include('notes.buttons.delete-note-button')
                 </div>

@@ -3,7 +3,8 @@
         class="list-group-item list-group-item-action {{ Route::is('dashboard') ? 'active' : '' }}">
         {{ __('All Notes') }}
     </a>
-    <a href="#" class="list-group-item list-group-item-action">{{ __('Favorites') }}</a>
+    <a href="{{ route('favorites') }}"
+        class="list-group-item list-group-item-action {{ Route::is('favorites') ? 'active' : '' }}">{{ __('Favorites') }}</a>
     <div class="list-group-item">
         <h6 class="mb-1">{{ __('My library') }}</h6>
         <ul class="list-unstyled">

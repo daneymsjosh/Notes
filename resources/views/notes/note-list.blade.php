@@ -1,6 +1,6 @@
 <div class="row">
     @forelse ($notes as $note)
-        <div class="col-md-4 mb-3">
+        <div class="col-md-3 mb-3">
             <div class="card shadow-sm h-100">
                 <a href="{{ route('notes.show', $note->id) }}" class="text-decoration-none text-dark">
                     <div class="card-body d-flex flex-column">

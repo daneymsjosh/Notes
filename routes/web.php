@@ -25,9 +25,10 @@ Route::resource('notes', NoteController::class)->middleware(['auth']);
 
 Route::resource('categories', CategoryController::class)->middleware(['auth']);
 
+Route::controller(NoteFavoriteController::class)->middleware('auth')->group(function () {
+    Route::get('favorites', '__invoke')->middleware('auth')->name('favorites');
 
-Route::get('favorites', NoteFavoriteController::class)->middleware('auth')->name('favorites');
+    Route::post('notes/{note}/favorite', 'favorite')->name('notes.favorite');
 
-Route::post('notes/{note}/favorite', [NoteFavoriteController::class, 'favorite'])->middleware('auth')->name('notes.favorite');
-
-Route::post('notes/{note}/unfavorite', [NoteFavoriteController::class, 'unfavorite'])->middleware('auth')->name('notes.unfavorite');
+    Route::post('notes/{note}/unfavorite', 'unfavorite')->name('notes.unfavorite');
+});

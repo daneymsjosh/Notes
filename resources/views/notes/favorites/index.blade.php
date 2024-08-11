@@ -6,15 +6,15 @@
     </x-slot>
 
     <div class="py-4">
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
                 <!-- Sidebar -->
-                <div class="col-md-3">
+                <div class="col-md-2">
                     @include('layouts.sidebar')
                 </div>
 
                 <!-- Notes Grid -->
-                <div class="col-md-9">
+                <div class="col-md-10">
                     <div class="d-flex justify-content-between align-items-center mb-3">
                         <h1 class="text-xl mb-0">{{ __('Favorites') }}</h1>
                         <div class="flex-grow-1 d-flex justify-content-center">
